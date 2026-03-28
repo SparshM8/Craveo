@@ -1,11 +1,12 @@
 const mongoose = require('mongoose');
-function connectDB() {
-    mongoose.connect("mongodb://localhost:27017/craveo")
-    .then(() => {
-        console.log("Connected to MongoDB");
-    })
-    .catch((err) => {
-        console.error("Error connecting to MongoDB", err);
-    })
+
+async function connectDB() {
+    if (!process.env.MONGODB_URI) {
+        throw new Error('MONGODB_URI is not configured');
+    }
+
+    await mongoose.connect(process.env.MONGODB_URI);
+    console.log('MongoDB connected');
 }
-module.exports = connectDB;   
+
+module.exports = connectDB;
