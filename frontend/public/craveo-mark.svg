@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title>Craveo mark</title>
+  <rect width="64" height="64" rx="18" fill="#4b2117"/>
+  <path d="M42.5 17.5c-8.7-4.4-20.2-.9-24.1 7.9-3.9 8.8.2 19.5 9.2 23.1 7.2 2.9 15.4.5 19.6-5.7-2.6.8-5.6.6-8.1-.6-5.7-2.7-8.2-9.6-5.2-15.1 1.8-3.4 5-5.5 8.6-5.9z" fill="#f5b544"/>
+  <circle cx="43" cy="23" r="3" fill="#fff8f1"/>
+</svg>

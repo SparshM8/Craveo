@@ -1,0 +1,70 @@
+/* CSS Theme Variables (Light & Dark via system preference) */
+:root {
+  --color-bg: #fff8f1;
+  --color-surface: #ffffff;
+  --color-surface-alt: #fff0df;
+  --color-border: #f1d8be;
+  --color-text: #241711;
+  --color-text-secondary: #76584b;
+  --color-accent: #e85d2a;
+  --color-accent-hover: #c8471c;
+  --color-danger: #c2410c;
+  --color-brand-deep: #4b2117;
+  --color-brand-gold: #f5b544;
+
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+
+  --font-stack: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+
+  --shadow-sm: 0 1px 2px rgba(0,0,0,.06);
+  --shadow-md: 0 4px 12px -2px rgba(0,0,0,.08),0 2px 4px -2px rgba(0,0,0,.06);
+
+  --transition-base: 120ms cubic-bezier(.4,0,.2,1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #1d120e;
+    --color-surface: #2d1b15;
+    --color-surface-alt: #43271d;
+    --color-border: #664033;
+    --color-text: #fff7ed;
+    --color-text-secondary: #d8b8a7;
+    --color-accent: #ff8a4c;
+    --color-accent-hover: #ffad70;
+    --color-danger: #fb923c;
+    --color-brand-deep: #fff7ed;
+    --color-brand-gold: #f7c65b;
+    --shadow-sm: 0 1px 2px rgba(0,0,0,.5);
+    --shadow-md: 0 4px 18px -4px rgba(0,0,0,.5),0 2px 6px -2px rgba(0,0,0,.4);
+  }
+}
+
+/* Base element theming (can be imported once globally) */
+body {
+  font-family: var(--font-stack);
+  background: var(--color-bg);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.4;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+a:hover, a:focus-visible { color: var(--color-accent-hover); }
+
+::selection { background: var(--color-accent); color: #fff; }
