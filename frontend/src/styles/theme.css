@@ -1,16 +1,16 @@
 /* CSS Theme Variables (Light & Dark via system preference) */
 :root {
-  --color-bg: #fff8f1;
-  --color-surface: #ffffff;
-  --color-surface-alt: #fff0df;
-  --color-border: #f1d8be;
-  --color-text: #241711;
-  --color-text-secondary: #76584b;
-  --color-accent: #e85d2a;
-  --color-accent-hover: #c8471c;
-  --color-danger: #c2410c;
-  --color-brand-deep: #4b2117;
-  --color-brand-gold: #f5b544;
+  --color-bg: #f3f0e9;
+  --color-surface: #fbfaf6;
+  --color-surface-alt: #e7e1d6;
+  --color-border: rgba(24, 39, 45, 0.16);
+  --color-text: #18272d;
+  --color-text-secondary: #536269;
+  --color-accent: #ff684d;
+  --color-accent-hover: #e4533b;
+  --color-danger: #e4533b;
+  --color-brand-deep: #18272d;
+  --color-brand-gold: #c6e86b;
 
   --radius-xs: 6px;
   --radius-sm: 10px;
@@ -34,17 +34,17 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-bg: #1d120e;
-    --color-surface: #2d1b15;
-    --color-surface-alt: #43271d;
-    --color-border: #664033;
-    --color-text: #fff7ed;
-    --color-text-secondary: #d8b8a7;
-    --color-accent: #ff8a4c;
-    --color-accent-hover: #ffad70;
-    --color-danger: #fb923c;
-    --color-brand-deep: #fff7ed;
-    --color-brand-gold: #f7c65b;
+    --color-bg: #f3f0e9;
+    --color-surface: #fbfaf6;
+    --color-surface-alt: #e7e1d6;
+    --color-border: rgba(24, 39, 45, 0.16);
+    --color-text: #18272d;
+    --color-text-secondary: #536269;
+    --color-accent: #ff684d;
+    --color-accent-hover: #e4533b;
+    --color-danger: #e4533b;
+    --color-brand-deep: #18272d;
+    --color-brand-gold: #c6e86b;
     --shadow-sm: 0 1px 2px rgba(0,0,0,.5);
     --shadow-md: 0 4px 18px -4px rgba(0,0,0,.5),0 2px 6px -2px rgba(0,0,0,.4);
   }

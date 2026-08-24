@@ -1,43 +1,9 @@
-@import './theme.css';
-
-.bottom-nav {
-  position: fixed;
-  left: 0; right: 0; bottom: 0;
-  height: 56px;
-   background: color-mix(in srgb, #000 35%, transparent);
-  backdrop-filter: blur(2px);
-  color: #fff;
-  border: 1px solid rgba(255,255,255,.15);
-  box-shadow: var(--shadow-md);
-  border-top: 1px solid var(--color-border);
-  z-index: 50;
-}
-
-.bottom-nav__inner {
-  max-width: 720px;
-  margin: 0 auto;
-  height: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-
-.bottom-nav__item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-text-secondary);
-  text-decoration: none;
-  gap: 2px;
-}
-
-.bottom-nav__item.is-active { color: var(--color-text); }
-
-.bottom-nav__icon { line-height: 0; }
-
-.bottom-nav__label { font-size: 12px; }
-
-/* Safe area for iOS */
-@supports(padding: max(0px)) {
-  .bottom-nav { padding-bottom: max(env(safe-area-inset-bottom), 0px); }
-}
+.bottom-nav { position: fixed; left: 50%; bottom: 18px; z-index: 50; width: min(560px, calc(100vw - 24px)); transform: translateX(-50%); }
+.bottom-nav__inner { display: grid; grid-template-columns: repeat(5, 1fr); padding: 6px; border: 1px solid rgba(243,240,233,.18); border-radius: 999px; background: rgba(24,39,45,.96); box-shadow: 0 14px 36px rgba(24,39,45,.22); backdrop-filter: blur(14px); }
+.bottom-nav__item { display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 8px; min-height: 42px; border-radius: 999px; color: #9aa9a8; text-decoration: none; font-size: 12px; transition: color .18s ease, background .18s ease, transform .18s ease; }
+.bottom-nav__item:hover { color: #f3f0e9; transform: translateY(-1px); }
+.bottom-nav__item.is-active { background: var(--coral); color: #fbfaf6; }
+.bottom-nav__icon { position: relative; display: grid; place-items: center; line-height: 0; }
+.bottom-nav__icon b { position: absolute; top: -8px; right: -12px; display: grid; place-items: center; min-width: 14px; height: 14px; padding: 0 3px; border-radius: 99px; background: var(--lime); color: var(--ink); font-family: var(--mono); font-size: 8px; line-height: 1; }
+.bottom-nav__label { font-size: 11px; font-weight: 600; }
+@supports(padding: max(0px)) {   .bottom-nav { bottom: max(18px, env(safe-area-inset-bottom)); } }

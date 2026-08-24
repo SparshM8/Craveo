@@ -9,7 +9,10 @@ const CreateFood = () => {
     const [ videoFile, setVideoFile ] = useState(null);
     const [ videoURL, setVideoURL ] = useState('');
     const [ fileError, setFileError ] = useState('');
+    const [ submitError, setSubmitError ] = useState('');
+    const [ isSubmitting, setIsSubmitting ] = useState(false);
     const fileInputRef = useRef(null);
+    const MAX_VIDEO_SIZE = 100 * 1024 * 1024;
 
     const navigate = useNavigate();
 
@@ -27,6 +30,7 @@ const CreateFood = () => {
         const file = e.target.files && e.target.files[ 0 ];
         if (!file) { setVideoFile(null); setFileError(''); return; }
         if (!file.type.startsWith('video/')) { setFileError('Please select a valid video file.'); return; }
+        if (file.size > MAX_VIDEO_SIZE) { setFileError('Please choose a video smaller than 100MB.'); return; }
         setFileError('');
         setVideoFile(file);
     };
@@ -49,6 +53,9 @@ const CreateFood = () => {
 
     const onSubmit = async (e) => {
         e.preventDefault();
+        if (isDisabled || isSubmitting) return;
+        setIsSubmitting(true);
+        setSubmitError('');
 
         const formData = new FormData();
 
@@ -56,12 +63,18 @@ const CreateFood = () => {
         formData.append('description', description);
         formData.append("mama", videoFile);
 
-        const response = await api.post('/api/food', formData)
-
-        console.log(response.data);
-        navigate("/"); // Redirect to home or another page after successful creation
-        // Optionally reset
-        // setName(''); setDescription(''); setVideoFile(null);
+        try {
+            await api.post('/api/food', formData);
+            navigate('/');
+        } catch (error) {
+            if (error.response?.status === 401) {
+                setSubmitError('Your partner session has expired. Please sign in again.');
+            } else {
+                setSubmitError(error.response?.data?.message || 'Upload failed. Please try again.');
+            }
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     const isDisabled = useMemo(() => !name.trim() || !videoFile, [ name, videoFile ]);
@@ -153,9 +166,11 @@ const CreateFood = () => {
                         />
                     </div>
 
+                    {submitError && <p className="error-text" role="alert">{submitError}</p>}
+
                     <div className="form-actions">
-                        <button className="btn-primary" type="submit" disabled={isDisabled}>
-                            Share on Craveo
+                        <button className="btn-primary" type="submit" disabled={isDisabled || isSubmitting}>
+                            {isSubmitting ? 'Uploading bite…' : 'Share on Craveo'}
                         </button>
                     </div>
                 </form>
