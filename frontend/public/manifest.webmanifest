@@ -1,0 +1,17 @@
+{
+  "name": "Craveo — Taste something new",
+  "short_name": "Craveo",
+  "description": "Visual food discovery for local restaurants and hungry people.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f3f0e9",
+  "theme_color": "#18272d",
+  "icons": [
+    {
+      "src": "/craveo-mark.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
