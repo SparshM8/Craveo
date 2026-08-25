@@ -7,6 +7,8 @@
 [![Testing](https://img.shields.io/badge/testing-Playwright%20%2B%20Node%20Test%20Runner-2EAD33)](frontend/)
 [![Status](https://img.shields.io/badge/status-pilot%20prototype-F59E0B)](#project-status)
 
+**Live demo:** [craveo-wine.vercel.app](https://craveo-wine.vercel.app/)
+
 Craveo is a **Lucknow-first food discovery and ordering prototype** that combines short-form food content with restaurant, dish, menu, review, cart, and order experiences. The product is designed around a simple loop:
 
 > **Watch a local food moment → understand the dish → trust it → add it to the bag → order it → review it.**
@@ -107,7 +109,7 @@ npm test
 
 ## Project status
 
-Craveo is currently a **feature-complete prototype and pilot foundation**, not a production delivery marketplace. The repository uses starter catalog records and a local preview checkout until official provider access, live menus, payments, delivery operations, moderation workflows, and deployment secrets are configured.
+Craveo is currently a **feature-complete prototype and pilot foundation**, not a production delivery marketplace. The deployed demo runs in self-contained preview mode when the optional backend is not configured. The repository uses starter catalog records and a local preview checkout until official provider access, live menus, payments, delivery operations, moderation workflows, and deployment secrets are configured.
 
 The next high-value milestones are live Lucknow catalog data, restaurant claiming and moderation, rights-aware media ingestion, persisted commerce, payment and delivery adapters, and operational support tooling.
 
