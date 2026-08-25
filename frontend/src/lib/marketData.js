@@ -1,3 +1,5 @@
+import { lucknowRestaurants } from './lucknowData'
+
 export const restaurants = [
   {
     id: 'naan-beyond',
@@ -86,7 +88,36 @@ export const reels = [
   { id: 'reel-04', restaurantId: 'bun-maska-club', menuItemId: 'bun-01', creator: 'Arjun’s lunch break', creatorType: 'Customer', source: 'Verified order', caption: 'The bun that fixed my Monday.', duration: '0:20', views: '7.2K', image: 'https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1200&q=90', accent: '#f6bd4b' },
 ]
 
-export const getRestaurant = (id) => restaurants.find((restaurant) => restaurant.id === id) || restaurants[0]
+// Lucknow catalog records use a different shape than the market dataset above.
+// Normalize them so the shared Restaurant page can render a Lucknow bite opened
+// from /lucknow without falling back to an unrelated restaurant.
+const normalizeLucknowRestaurant = (restaurant) => ({
+  id: restaurant.id,
+  name: restaurant.name,
+  cuisine: restaurant.cuisine,
+  location: `${restaurant.areaLabel}, Lucknow`,
+  rating: restaurant.rating,
+  reviews: restaurant.reviewCount,
+  eta: restaurant.eta,
+  price: restaurant.price,
+  isOpen: Boolean(restaurant.open),
+  status: restaurant.open ? 'Open now' : 'Closed',
+  cover: restaurant.cover,
+  avatar: restaurant.name.slice(0, 2).toUpperCase(),
+  accent: restaurant.color,
+  story: restaurant.featured,
+  tags: [restaurant.areaLabel, restaurant.category, restaurant.orderMode].filter(Boolean),
+})
+
+const getLucknowRestaurant = (id) => {
+  const match = lucknowRestaurants.find((restaurant) => restaurant.id === id)
+  return match ? normalizeLucknowRestaurant(match) : null
+}
+
+export const getRestaurant = (id) =>
+  restaurants.find((restaurant) => restaurant.id === id) ||
+  getLucknowRestaurant(id) ||
+  restaurants[0]
 export const getMenuForRestaurant = (id) => menuItems.filter((item) => item.restaurantId === id)
 export const getReelsForRestaurant = (id) => reels.filter((reel) => reel.restaurantId === id)
 export const getMenuItem = (id) => menuItems.find((item) => item.id === id)
